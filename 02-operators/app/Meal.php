@@ -6,7 +6,6 @@
  */
 class Meal
 {
-
     public function cost()
     {
         $handle = fopen("php://stdin", "r");

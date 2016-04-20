@@ -1,5 +1,7 @@
-<?php
-use App\Printer;
+<?php namespace Tests;
+
+use App\Utilities\IntegerUtility;
+use PHPUnit_Framework_TestCase;
 
 /**
  * @author Rizart Dokollar <r.dokollari@gmail.com
@@ -7,17 +9,31 @@ use App\Printer;
  */
 class PrinterTest extends PHPUnit_Framework_TestCase
 {
-    /** @test */
-    public function it_prints_sum_of_both_integers_on_a_new_line()
+    protected $integerUtility;
+
+    public function setUp()
     {
-        $printer = $this->getMock(Printer::class);
+        $this->integerUtility = new IntegerUtility();
+    }
 
-        $printer->expects($this->any())
-            ->method('fgets')
-            ->willReturn(12);
+    /** @test */
+    public function it_gets_sum_of_integers()
+    {
+        $this->assertSame(16, $this->integerUtility->sumInteger(12));
+    }
 
-        $this->expectOutputString(16);
+    /** @test */
+    public function it_gets_sum_of_doubles()
+    {
+        $this->assertSame(8.0, $this->integerUtility->sumDouble(4.0));
+    }
 
-        $printer->printIntegersSum();
+    /** @test */
+    public function it_gets_concatenated_strings()
+    {
+        $this->assertSame(
+            'HackerRank is the best place to learn and practice coding!',
+            $this->integerUtility->concatenate('is the best place to learn and practice coding!')
+        );
     }
 }
