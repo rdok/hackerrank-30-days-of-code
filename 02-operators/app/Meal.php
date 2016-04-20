@@ -1,4 +1,4 @@
-<?php
+<?php namespace App;
 
 /**
  * @author Rizart Dokollar <r.dokollari@gmail.com
@@ -6,20 +6,28 @@
  */
 class Meal
 {
-    public function cost()
+    private $tipPercent;
+    private $taxPercent;
+    private $cost;
+
+    public function __construct($cost, $tipPercent, $taxPercent)
     {
-        $handle = fopen("php://stdin", "r");
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-        $mealCost = (float)fgets($handle);
-        $tipPercent = (float)fgets($handle);
-        $taxPercent = (float)fgets($handle);
+        $this->tipPercent = $tipPercent;
+        $this->taxPercent = $taxPercent;
+        $this->cost = $cost;
+    }
 
-        $tip = $mealCost * $tipPercent / 100;
-        $tax = $mealCost * $taxPercent / 100;
-        $totalCost = $mealCost + $tip + $tax;
+    public function toString()
+    {
+        return sprintf('The total meal cost is %d dollars.', $this->getTotalCost());
+    }
 
-        $cost = round($totalCost);
+    public function getTotalCost()
+    {
+        $tip = $this->cost * $this->tipPercent / 100;
+        $tax = $this->cost * $this->taxPercent / 100;
+        $totalCost = $this->cost + $tip + $tax;
 
-        echo "The total meal cost is $cost dollars.";
+        return round($totalCost);
     }
 }
