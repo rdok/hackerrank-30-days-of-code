@@ -49,14 +49,14 @@ class Person
     public function setAge($age)
     {
         if ($age < 0) {
+            echo "Age is not valid, setting age to 0.\n";
+
             $this->age = 0;
 
-            return "Age is not valid, setting age to 0.";
+            return;
         }
 
         $this->age = $age;
-
-        return null;
     }
 
     /**
@@ -65,13 +65,17 @@ class Person
     public function amIOld()
     {
         if ($this->getAge() < 13) {
-            return 'You are young.';
+            echo "You are young.\n";
+
+            return;
         }
 
         if ($this->getAge() < 18) {
-            return 'You are a teenager.';
+            echo "You are a teenager.\n";
+
+            return;
         }
 
-        return 'You are old.';
+        echo "You are old.\n";
     }
 }

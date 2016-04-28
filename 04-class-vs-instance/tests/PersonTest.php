@@ -13,7 +13,9 @@ class PersonTest extends PHPUnit_Framework_TestCase
         $incorrectAge = -1;
         $person = new Person();
 
-        $this->assertSame('Age is not valid, setting age to 0.', $person->setAge($incorrectAge));
+        $this->expectOutputString("Age is not valid, setting age to 0.\n");
+
+        $person->setAge($incorrectAge);
 
         $this->assertSame(0, $person->getAge());
     }
@@ -32,29 +34,47 @@ class PersonTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_returns_whether_a_person_is_young_teenager_or_old()
+    public function it_prints_young_person()
     {
         $person = new Person();
         $this->assertSame(0, $person->getAge());
 
-        $this->assertSame('You are young.', $person->amIOld());
+        $person->setAge(0);
+        $person->amIOld();
         $person->setAge(7);
-        $this->assertSame('You are young.', $person->amIOld());
+        $person->amIOld();
         $person->setAge(12);
-        $this->assertSame('You are young.', $person->amIOld());
+        $person->amIOld();
+        $this->expectOutputString("You are young.\nYou are young.\nYou are young.\n");
+    }
+
+    /** @test */
+    public function it_prints_teenager_person()
+    {
+        $person = new Person();
+        $this->assertSame(0, $person->getAge());
 
         $person->setAge(13);
-        $this->assertSame('You are a teenager.', $person->amIOld());
+        $person->amIOld();
         $person->setAge(15);
-        $this->assertSame('You are a teenager.', $person->amIOld());
+        $person->amIOld();
         $person->setAge(17);
-        $this->assertSame('You are a teenager.', $person->amIOld());
+        $person->amIOld();
+        $this->expectOutputString("You are a teenager.\nYou are a teenager.\nYou are a teenager.\n");
+    }
+
+    /** @test */
+    public function it_prints_old_person()
+    {
+        $person = new Person();
+        $this->assertSame(0, $person->getAge());
 
         $person->setAge(18);
-        $this->assertSame('You are old.', $person->amIOld());
+        $person->amIOld();
         $person->setAge(25);
-        $this->assertSame('You are old.', $person->amIOld());
-        $person->setAge(75);
-        $this->assertSame('You are old.', $person->amIOld());
+        $person->amIOld();
+        $person->setAge(105);
+        $person->amIOld();
+        $this->expectOutputString("You are old.\nYou are old.\nYou are old.\n");
     }
 }
