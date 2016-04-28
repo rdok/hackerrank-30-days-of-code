@@ -12,14 +12,28 @@ namespace App;
  */
 class LoopUtility
 {
+    public function getEvenAndOddCharactersSeparatedByTwoSpaces($word)
+    {
+        $word = trim(preg_replace('/\s\s+/', ' ', $word));
+
+        return sprintf("%s %s", $this->getEvenIndexCharacters($word), $this->getOddIndexCharacters($word));
+    }
+
     public function getEvenIndexCharacters($word)
+    {
+        return $this->getIndexCharacters($word);
+    }
+
+    private function getIndexCharacters($word, $requiredEvenIndex = true)
     {
         $evenIndexedCharacters = '';
         $wordArray = str_split($word);
         $wordArraySize = sizeof($wordArray);
 
         for ($index = 0; $index < $wordArraySize; $index++) {
-            if ($this->indexIsEven($index)) {
+            if ($requiredEvenIndex && $this->indexIsEven($index)
+                || !$requiredEvenIndex && $this->indexIsOdd($index)
+            ) {
                 $evenIndexedCharacters .= $wordArray[$index];
             }
         }
@@ -31,8 +45,18 @@ class LoopUtility
      * @param $index
      * @return bool
      */
-    public function indexIsEven($index)
+    private function indexIsEven($index)
     {
         return $index % 2 === 0;
+    }
+
+    private function indexIsOdd($index)
+    {
+        return $index % 2 !== 0;
+    }
+
+    public function getOddIndexCharacters($word)
+    {
+        return $this->getIndexCharacters($word, false);
     }
 }
