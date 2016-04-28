@@ -17,4 +17,19 @@ class PersonTest extends PHPUnit_Framework_TestCase
 
         $this->assertSame(0, $person->getAge());
     }
+
+    /** @test */
+    public function it_increases_age_each_year()
+    {
+        $incorrectAge = -1;
+        $person = new Person();
+
+        $this->assertSame(0, $person->getAge());
+
+        $person->yearPasses();
+        $this->assertSame(1, $person->getAge());
+
+        $person->yearPasses();
+        $this->assertSame(2, $person->getAge());
+    }
 }

@@ -19,6 +19,11 @@ class Person
         $this->setAge($initialAge);
     }
 
+    public function yearPasses()
+    {
+        $this->setAge($this->getAge() + 1);
+    }
+
     public function getAge()
     {
         return $this->age;
