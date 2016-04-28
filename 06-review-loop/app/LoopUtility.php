@@ -14,9 +14,9 @@ class LoopUtility
 {
     public function getEvenAndOddCharactersSeparatedByTwoSpaces($word)
     {
-        $word = trim(preg_replace('/\s\s+/', ' ', $word));
+        $word = trim(preg_replace('/\s\s+/', '', $word));
 
-        return sprintf("%s %s", $this->getEvenIndexCharacters($word), $this->getOddIndexCharacters($word));
+        return sprintf("%s %s\n", $this->getEvenIndexCharacters($word), $this->getOddIndexCharacters($word));
     }
 
     public function getEvenIndexCharacters($word)

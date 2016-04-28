@@ -33,5 +33,36 @@ class LoopTest extends PHPUnit_Framework_TestCase
         $this->assertSame('Hce akr', $loopUtility->getEvenAndOddCharactersSeparatedByTwoSpaces("Hacker\n"));
         $this->assertSame('Hce akr', $loopUtility->getEvenAndOddCharactersSeparatedByTwoSpaces("Hacker"));
         $this->assertSame('Rn ak', $loopUtility->getEvenAndOddCharactersSeparatedByTwoSpaces('Rank'));
+
+        // Bought tests
+        $this->assertSame('oyzpyppytrtrttvxxx vvvtvvxzlzszzqrtuq',
+            $loopUtility->getEvenAndOddCharactersSeparatedByTwoSpaces('ovyvzvptyvpvpxyztlrztsrztztqvrxtxuxq'));
+
+        $this->assertSame('hlm ot',
+            $loopUtility->getEvenAndOddCharactersSeparatedByTwoSpaces('holtm'));
+
+        $this->assertSame('uzrmzyypj vxuutqvni',
+            $loopUtility->getEvenAndOddCharactersSeparatedByTwoSpaces('uvzxrumuztyqyvpnji'));
+
+        $this->assertSame('trzzwsqszuourwntvsqyzxlruxp muxuokyxtvsysrmxzrwtrptwsuw',
+            $loopUtility->getEvenAndOddCharactersSeparatedByTwoSpaces('tmruzxzuwoskqysxztuvosuyrswrnmtxvzsrqwytzrxpltrwusxupw'));
+
+        $this->assertSame('wswuuuyrxsyvquykwyuqvpoqmvxwpsnrtrpuuvzuvpwyvuwsw xtxzyvzsyxuyxxsqsqmrovwunrpqwrvzxxvxnyvpuovzzzvrv',
+            $loopUtility->getEvenAndOddCharactersSeparatedByTwoSpaces('wxstwxuzuyuvyzrsxysxyuvyqxuxyskqwsyqumqrvopvowqumnvrxpwqpwsrnvrztxrxpvuxunvyzvupvupowvyzvzuzwvsrwv'));
+
+        $this->assertSame('yzrsrlwmpvwxpq rxxktpptxorrx',
+            $loopUtility->getEvenAndOddCharactersSeparatedByTwoSpaces('yrzxrxskrtlpwpmtpxvowrxrpxq'));
+
+        $this->assertSame('pymutopvwl rutnmvwosj',
+            $loopUtility->getEvenAndOddCharactersSeparatedByTwoSpaces('pryumtuntmovpwvowslj'));
+
+        $this->assertSame('nslxtutnrsyxyqqxs okrryxmuzrutwwpt',
+            $loopUtility->getEvenAndOddCharactersSeparatedByTwoSpaces('nosklrxrtyuxtmnurzsryuxtywqwqpxts'));
+
+        $this->assertSame('fpzvwrvuqzyomxxvypzpuqtwyyznxyptsotuquy msyqxtpwsvvtssuzvwrmxwsvttsuurvyquzrxr',
+            $loopUtility->getEvenAndOddCharactersSeparatedByTwoSpaces('fmpszyvqwxrtvpuwqszvyvotmsxsxuvzyvpwzrpmuxqwtswvytytzsnuxuyrpvtysqoutzurqxury'));
+
+        $this->assertSame('jmxwxy kszrz',
+            $loopUtility->getEvenAndOddCharactersSeparatedByTwoSpaces('jkmsxzwrxzy'));
     }
 }
