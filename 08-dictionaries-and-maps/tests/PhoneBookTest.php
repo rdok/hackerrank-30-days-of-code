@@ -18,7 +18,6 @@ class PhoneBookTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($phoneBook->add($phoneBookEntry));
 
         $this->assertSame(1, $phoneBook->getTotalEntries());
-
         $this->assertSame($phoneBookEntry, $phoneBook->getByName('sam'));
     }
 }
