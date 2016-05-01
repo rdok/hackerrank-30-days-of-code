@@ -1,5 +1,6 @@
 <?php
 use App\PhoneBook;
+use App\Reader;
 
 /**
  * @author Rizart Dokollari <r.dokollari@gmail.com>
@@ -18,6 +19,21 @@ class PhoneBookTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($phoneBook->add($phoneBookEntry));
 
         $this->assertSame(1, $phoneBook->getTotalEntries());
-        $this->assertSame($phoneBookEntry, $phoneBook->getByName('sam'));
+        $this->assertSame($phoneBookEntry, $phoneBook->getEntryByName('sam'));
+    }
+
+    /** @test */
+    public function it_stores_entries_from_fgets()
+    {
+        $phoneBook = new PhoneBook();
+        $reader = new Reader();
+        $filePath = __DIR__ . '/../storage/tests.txt';
+        $reader->open($filePath);
+
+        $this->assertSame(0, $phoneBook->getTotalEntries());
+
+        $phoneBook->addEntriesByReader($reader);
+
+        $this->assertSame(3, $phoneBook->getTotalEntries());
     }
 }

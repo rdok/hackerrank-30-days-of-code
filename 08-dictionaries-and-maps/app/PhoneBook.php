@@ -23,6 +23,36 @@ class PhoneBook
         return sizeof($this->entries);
     }
 
+    public function getEntryByName($name)
+    {
+        foreach ($this->entries as $entry) {
+            if ($entry['name'] === $name) {
+                return $entry;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * The reader must point to the row saying the total entries.
+     * Next, for the total number of entries, the reader must able to read name/phone pairs.
+     *
+     * @param $reader
+     */
+    function addEntriesByReader(Reader $reader)
+    {
+        $totalEntries = $reader->readNextLine();
+
+        for ($index = 0; $index < $totalEntries; $index++) {
+            $rawEntry = explode(' ', $reader->readNextLine());
+
+            $entry = ['name' => $rawEntry[0], 'phoneNumber' => $rawEntry[1]];
+
+            $this->add($entry);
+        }
+    }
+
     /**
      * Add a new entry. The entries must be already validated:
      *  - Contains key with 'name', at least one alphanumeric character.
@@ -36,16 +66,5 @@ class PhoneBook
         array_push($this->entries, $phoneBookEntry);
 
         return true;
-    }
-
-    public function getByName($name)
-    {
-        foreach ($this->entries as $entry) {
-            if ($entry['name'] === $name) {
-                return $entry;
-            }
-        }
-
-        return null;
     }
 }

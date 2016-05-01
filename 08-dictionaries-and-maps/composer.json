@@ -6,7 +6,9 @@
       "email": "r.dokollari@gmail.com"
     }
   ],
-  "require": {},
+  "require": {
+    "mikey179/vfsStream": "^1.6"
+  },
   "require-dev": {
     "phpunit/phpunit": "^5.3"
   },

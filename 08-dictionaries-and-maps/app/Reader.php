@@ -26,6 +26,11 @@ class Reader
         $this->setHandler(fopen($stream, 'r'));
     }
 
+    public function readNextLine()
+    {
+        return fgets($this->getHandler());
+    }
+
     /**
      * @return mixed
      */
@@ -40,10 +45,5 @@ class Reader
     public function setHandler($handler)
     {
         $this->handler = $handler;
-    }
-
-    public function readNextLine()
-    {
-        return fgets($this->getHandler());
     }
 }

@@ -5,7 +5,7 @@ use App\Reader;
  * @author Rizart Dokollari <r.dokollari@gmail.com>
  * @since 5/1/16
  */
-class HackerRankScriptTest extends PHPUnit_Framework_TestCase
+class ReaderTest extends PHPUnit_Framework_TestCase
 {
     /** @test */
     public function it_opens_file()
