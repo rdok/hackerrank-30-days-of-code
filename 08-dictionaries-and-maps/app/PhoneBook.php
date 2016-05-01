@@ -23,17 +23,6 @@ class PhoneBook
         return sizeof($this->entries);
     }
 
-    public function getEntryByName($name)
-    {
-        foreach ($this->entries as $entry) {
-            if ($entry['name'] === $name) {
-                return $entry;
-            }
-        }
-
-        return false;
-    }
-
     /**
      * The reader must point to the row saying the total entries.
      * Next, for the total number of entries, the reader must able to read name/phone pairs.
@@ -47,7 +36,7 @@ class PhoneBook
         for ($index = 0; $index < $totalEntries; $index++) {
             $rawEntry = explode(' ', $reader->readNextLine());
 
-            $entry = ['name' => $rawEntry[0], 'phoneNumber' => $rawEntry[1]];
+            $entry = ['name' => rtrim($rawEntry[0]), 'phoneNumber' => rtrim($rawEntry[1])];
 
             $this->add($entry);
         }
@@ -66,5 +55,46 @@ class PhoneBook
         array_push($this->entries, $phoneBookEntry);
 
         return true;
+    }
+
+    public function printEntriesQueryResponseByReader(Reader $reader)
+    {
+        $output = '';
+
+        while (($entryName = $reader->readNextLine()) !== false) {
+            if (($entry = $this->getEntryByName(rtrim($entryName))) !== false) {
+                $output .= $entry['name'].'='.$entry['phoneNumber']."\n";
+                continue;
+            }
+
+            $output .= "Not found\n";
+        }
+
+        echo rtrim($output, "\n");
+    }
+
+    /**
+     * Entry name must be already vaildated/trimed.
+     *
+     * @param $name
+     * @return bool|mixed
+     */
+    public function getEntryByName($name)
+    {
+        foreach ($this->entries as $entry) {
+            if ($entry['name'] === $name) {
+                return $entry;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @return array
+     */
+    public function getEntries()
+    {
+        return $this->entries;
     }
 }

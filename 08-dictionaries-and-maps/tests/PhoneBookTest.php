@@ -27,7 +27,7 @@ class PhoneBookTest extends PHPUnit_Framework_TestCase
     {
         $phoneBook = new PhoneBook();
         $reader = new Reader();
-        $filePath = __DIR__ . '/../storage/tests.txt';
+        $filePath = __DIR__.'/../storage/tests.txt';
         $reader->open($filePath);
 
         $this->assertSame(0, $phoneBook->getTotalEntries());
@@ -35,5 +35,19 @@ class PhoneBookTest extends PHPUnit_Framework_TestCase
         $phoneBook->addEntriesByReader($reader);
 
         $this->assertSame(3, $phoneBook->getTotalEntries());
+    }
+
+    /** @test */
+    public function it_prints_entries_query_response_from_reader()
+    {
+        $phoneBook = new PhoneBook();
+        $reader = new Reader();
+        $filePath = __DIR__.'/../storage/tests.txt';
+        $reader->open($filePath);
+
+        $phoneBook->addEntriesByReader($reader);
+        $phoneBook->printEntriesQueryResponseByReader($reader);
+
+        $this->expectOutputString("sam=99912222\nNot found\nharry=12299933");
     }
 }

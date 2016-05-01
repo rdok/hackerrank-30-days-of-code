@@ -8,35 +8,8 @@ use App\Reader;
 
 $reader = new Reader();
 $phoneBook = new PhoneBook();
-$reader->open('php://stdin');
+$reader->open(__DIR__.'/../storage/tests.txt');
 
-$totalEntries = $reader->readNextLine();
+$phoneBook->addEntriesByReader($reader);
 
-storePhoneBookEntries($totalEntries, $reader, $phoneBook);
-
-while (($entryName = $reader->readNextLine()) !== false) {
-    if (($entry = $phoneBook->getEntryByName($entryName)) !== false) {
-        echo $entry;
-        continue;
-    }
-
-    echo 'Not found';
-}
-
-/////////////// end script commands /////////////////////////
-//////////////// script functions ///////////////////////////////////
-/**
- * @param $totalEntries
- * @param $reader
- * @param $phoneBook
- */
-function storePhoneBookEntries($totalEntries, Reader $reader, PhoneBook $phoneBook)
-{
-    for ($index = 0; $index < $totalEntries; $index++) {
-        $rawEntry = explode($reader->readNextLine(), ' ');
-
-        $entry = ['name' => $rawEntry[0], 'phoneNumber' => $rawEntry[1]];
-
-        $phoneBook->add($entry);
-    }
-}
+$phoneBook->printEntriesQueryResponseByReader($reader);
