@@ -1,4 +1,5 @@
 <?php
+use App\Reader;
 
 /**
  * @author Rizart Dokollari <r.dokollari@gmail.com>
@@ -7,8 +8,14 @@
 class HackerRankScriptTest extends PHPUnit_Framework_TestCase
 {
     /** @test */
-    public function it_reads_test_input_from_file()
+    public function it_opens_file()
     {
-        $inputs = file_get_contents(__DIR__ . '/../storage/tests.txt');
+        $reader = new Reader();
+
+        $expectedPath = __DIR__ . '/../storage/tests.txt';
+
+        $this->assertNull($reader->getHandler());
+        $reader->open($expectedPath);
+        $this->assertNotNull($reader->getHandler());
     }
 }
