@@ -6,8 +6,15 @@
 
 namespace App;
 
+/**
+ * Class PhoneBook
+ * @package App
+ */
 class PhoneBook
 {
+    /**
+     * @var array
+     */
     private $entries;
 
     /**
@@ -18,6 +25,9 @@ class PhoneBook
         $this->entries = [];
     }
 
+    /**
+     * @return mixed
+     */
     public function getTotalEntries()
     {
         return sizeof($this->entries);
@@ -36,7 +46,7 @@ class PhoneBook
         for ($index = 0; $index < $totalEntries; $index++) {
             $rawEntry = explode(' ', $reader->readNextLine());
 
-            $entry = ['name' => rtrim($rawEntry[0]), 'phoneNumber' => rtrim($rawEntry[1])];
+            $entry = ['name' => $rawEntry[0], 'phoneNumber' => rtrim($rawEntry[1])];
 
             $this->add($entry);
         }
@@ -52,16 +62,20 @@ class PhoneBook
      */
     public function add(array $phoneBookEntry)
     {
-        array_push($this->entries, $phoneBookEntry);
+        $this->entries[$phoneBookEntry['name']] = $phoneBookEntry;
 
         return true;
     }
 
+    /**
+     * @param Reader $reader
+     */
     public function printEntriesQueryResponseByReader(Reader $reader)
     {
         $output = '';
 
         while (($entryName = $reader->readNextLine()) !== false) {
+
             if (($entry = $this->getEntryByName(rtrim($entryName))) !== false) {
                 $output .= $entry['name'].'='.$entry['phoneNumber']."\n";
                 continue;
@@ -70,21 +84,21 @@ class PhoneBook
             $output .= "Not found\n";
         }
 
-        echo rtrim($output, "\n");
+        echo $output;
+
+        $reader->close();
     }
 
     /**
-     * Entry name must be already vaildated/trimed.
+     * Entry name must be already validated/trimed.
      *
      * @param $name
      * @return bool|mixed
      */
     public function getEntryByName($name)
     {
-        foreach ($this->entries as $entry) {
-            if ($entry['name'] === $name) {
-                return $entry;
-            }
+        if (array_key_exists($name, $this->entries)) {
+            return $this->entries[$name];
         }
 
         return false;

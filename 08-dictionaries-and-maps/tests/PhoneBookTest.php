@@ -48,6 +48,6 @@ class PhoneBookTest extends PHPUnit_Framework_TestCase
         $phoneBook->addEntriesByReader($reader);
         $phoneBook->printEntriesQueryResponseByReader($reader);
 
-        $this->expectOutputString("sam=99912222\nNot found\nharry=12299933");
+        $this->expectOutputString("sam=99912222\nNot found\nharry=12299933\n");
     }
 }
