@@ -41,4 +41,9 @@ class Reader
     {
         $this->handler = $handler;
     }
+
+    public function readNextLine()
+    {
+        return fgets($this->getHandler());
+    }
 }
