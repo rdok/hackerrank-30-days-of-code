@@ -12,7 +12,7 @@ class ReaderTest extends PHPUnit_Framework_TestCase
     {
         $reader = new Reader();
 
-        $expectedPath = __DIR__ . '/../storage/tests.txt';
+        $expectedPath = __DIR__.'/../storage/tests.txt';
 
         $this->assertNull($reader->getHandler());
         $reader->open($expectedPath);
@@ -35,7 +35,7 @@ class ReaderTest extends PHPUnit_Framework_TestCase
     public function it_reads_line()
     {
         $reader = new Reader();
-        $reader->open(__DIR__ . '/../storage/tests.txt');
+        $reader->open(__DIR__.'/../storage/tests.txt');
 
         $this->assertSame("3\n", $reader->readNextLine());
         $this->assertSame("sam 99912222\n", $reader->readNextLine());
