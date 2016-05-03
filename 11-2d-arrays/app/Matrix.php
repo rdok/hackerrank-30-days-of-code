@@ -32,19 +32,26 @@ class Matrix
         $this->elements = $elements;
     }
 
-    public function storeElementsFromString($elements)
+    public function storeElementsFromStringRow($elements)
     {
-        $rows = explode("\n", $elements);
+        $elements = rtrim($elements);
 
-        foreach ($rows as $row) {
-            $elementsRow = array_map('intval', explode(" ", $row));
+        $elements = array_map('intval', explode(" ", $elements));
 
-            $this->appendRow($elementsRow);
-        }
+        $this->appendRow($elements);
     }
 
     public function appendRow(array $elementsRow)
     {
         $this->elements[] = $elementsRow;
+    }
+
+    public function storeElementsFromString($elements)
+    {
+        $elementRows = explode("\n", $elements);
+
+        foreach ($elementRows as $row) {
+            $this->storeElementsFromStringRow($row);
+        }
     }
 }

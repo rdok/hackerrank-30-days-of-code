@@ -6,23 +6,25 @@
 
 class HackerRank
 {
-    private $hourglass;
+    private $matrix;
 
     public function __construct($stream)
     {
         $this->reader = new Reader($stream);
 
-        $this->hourglass = new Matrix();
+        $this->matrix = new Matrix();
     }
 
     public function printRequirements()
     {
-//        while (($row = $this->reader->readNextLine()) !== false) {
-//            
+        while (($elementsRow = $this->reader->readNextLine()) !== false) {
+            $this->matrix->storeElementsFromStringRow($elementsRow);
+
 //            $binaryNumber = $this->hourglass->getBinary($row);
 //
 //            echo $this->hourglass->getMaximumNumberOfConsecutiveOnes($binaryNumber)."\n";
-//        }
+        }
+
         return null;
     }
 }

@@ -25,6 +25,20 @@ class MatrixTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
+    public function it_stores_elements_from_string_row()
+    {
+        $matrix = new Matrix();
+
+        $this->assertCount(0, $matrix->getElements());
+
+        $matrix->storeElementsFromStringRow("1 1 1 0 0 0");
+
+        $this->assertCount(1, $matrix->getElements());
+
+        $this->assertSame([[1, 1, 1, 0, 0, 0]], $matrix->getElements());
+    }
+
+    /** @test */
     public function it_appends_row()
     {
         $matrix = new Matrix();
