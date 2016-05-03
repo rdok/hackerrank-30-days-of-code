@@ -14,9 +14,9 @@ class Matrix
 {
     private $elements;
 
-    public function __construct(array $numbers = [])
+    public function __construct(array $elements = [])
     {
-        $this->setElements($numbers);
+        $this->setElements($elements);
     }
 
     public function getElements()
@@ -37,7 +37,7 @@ class Matrix
         $rows = explode("\n", $elements);
 
         foreach ($rows as $row) {
-            $elementsRow = str_split($row);
+            $elementsRow = array_map('intval', explode(" ", $row));
 
             $this->appendRow($elementsRow);
         }
