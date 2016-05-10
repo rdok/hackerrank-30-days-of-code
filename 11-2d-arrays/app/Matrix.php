@@ -32,6 +32,13 @@ class Matrix
         $this->elements = $elements;
     }
 
+    public function storeElementsFromReader(Reader $reader)
+    {
+        while ($row = $reader->readNextLine()) {
+            $this->storeElementsFromStringRow($row);
+        }
+    }
+
     public function storeElementsFromStringRow($elements)
     {
         $elements = rtrim($elements);
@@ -44,14 +51,5 @@ class Matrix
     public function appendRow(array $elementsRow)
     {
         $this->elements[] = $elementsRow;
-    }
-
-    public function storeElementsFromString($elements)
-    {
-        $elementRows = explode("\n", $elements);
-
-        foreach ($elementRows as $row) {
-            $this->storeElementsFromStringRow($row);
-        }
     }
 }

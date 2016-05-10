@@ -5,6 +5,8 @@
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
+         printerFile="vendor/whatthejeff/nyancat-phpunit-resultprinter/src/NyanCat/PHPUnit/ResultPrinter.php"
+         printerClass="NyanCat\PHPUnit\ResultPrinter"
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="true"

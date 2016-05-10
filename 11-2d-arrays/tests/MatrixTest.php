@@ -14,7 +14,7 @@ class MatrixTest extends PHPUnit_Framework_TestCase
 
         $this->assertCount(0, $matrix->getElements());
 
-        $matrix->storeElementsFromString("1 1 1 0 0 0\n0 1 0 0 0 0");
+        $matrix->storeElementsFromReader("1 1 1 0 0 0\n0 1 0 0 0 0");
 
         $this->assertCount(2, $matrix->getElements());
 

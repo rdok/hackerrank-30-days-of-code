@@ -14,5 +14,8 @@
       "App\\": "app/",
       "Tests\\": "tests/"
     }
+  },
+  "require": {
+    "whatthejeff/nyancat-phpunit-resultprinter": "^1.2"
   }
 }
