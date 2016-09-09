@@ -1,5 +1,5 @@
 {
-  "name": "rdok/hackerrank-30-days-of-code-08-dictionaries-and-maps",
+  "name": "rdok/hackerrank",
   "authors": [
     {
       "name": "Rizart Dokollari",
@@ -7,7 +7,7 @@
     }
   ],
   "require-dev": {
-    "phpunit/phpunit": "^5.3"
+    "codeception/codeception": "^2.2"
   },
   "autoload": {
     "psr-4": {
