@@ -1,5 +1,6 @@
 import unittest
 import is_leap_year
+import subprocess
 from ddt import ddt, data, unpack
 
 @ddt
@@ -33,7 +34,7 @@ class TestLeapYear(unittest.TestCase):
     def test_is_not_evenly_dived_by_400(self):
         self.assertFalse(is_leap_year.divableByFourHundred(2500));
 
-    def prints_expected_outpout(self):
+    def test_prints_expected_outpout(self):
         self.process = subprocess.Popen(["python", "is_leap_year.py"], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.STDOUT)
         actualOuput = self.process.communicate( input = '1990' )[0]
         self.assertEquals( 'False\n', actualOuput )
