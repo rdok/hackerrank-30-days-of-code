@@ -8,7 +8,7 @@ class TestLeapYear(unittest.TestCase):
     def test_is_evenly_dived(self):
         self.assertTrue(is_leap_year.check(2000)); 
         self.assertTrue(is_leap_year.check(1992)); 
-        self.assertFalse(is_leap_year.check(1904)); 
+        self.assertTrue(is_leap_year.check(1904)); 
         self.assertFalse(is_leap_year.check(1901)); 
         self.assertFalse(is_leap_year.check(1900)); 
         self.assertTrue(is_leap_year.check(2400)); 
@@ -24,7 +24,7 @@ class TestLeapYear(unittest.TestCase):
         self.assertTrue(is_leap_year.divableByHundred(2000)); # divided by 4, 100, and 400
         self.assertTrue(is_leap_year.divableByHundred(1900)); # not divided by 400
 
-    def test_is_not_evenly_divided_by_100(self):
+    def test_is_not_evenly_divided_by_100_but_divided_by_400(self):
         self.assertFalse(is_leap_year.divableByHundred(1901));
 
     def test_is_evenly_dived_by_400(self):

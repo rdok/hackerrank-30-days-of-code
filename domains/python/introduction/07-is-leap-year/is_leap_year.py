@@ -9,7 +9,14 @@ def divableByFourHundred(number):
 
 def check(number):
     number = int(number)
-    return divableByFour(number) and divableByHundred(number) and divableByFourHundred(number)
+
+    if( not divableByFour(number) ):
+        return False
+
+    if( not divableByHundred(number) ):
+        return True
+
+    return  divableByFourHundred(number)
 
 if __name__ == '__main__':
     print 'True' if check(raw_input()) else 'False'
