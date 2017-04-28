@@ -1,16 +1,27 @@
 import unittest
-from ddt import ddt, data, unpack
 import subprocess
+from ddt import ddt, data, unpack
 
 @ddt
 class TestLists(unittest.TestCase):
 
-    def test_greeting(self):
-        process = subprocess.Popen(["python", "lists.py"], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.STDOUT)
-        actualOuput = process.communicate(
-                input = '12\ninsert 0 5\ninsert 1 10\ninsert 0 6\nprint\nremove 6\nappend 9\nappend 1\nsort\nprint\npop\nreverse\nprint'
-        )[0]
-        self.assertEquals('[6, 5, 10]\n[1, 5, 9, 10]\n[9, 5, 1]\n', actualOuput); 
+    def setUp(self):
+        self.process = subprocess.Popen(["python", "lists.py"], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+    def tearDown(self):
+        self.process = None
+
+    def test_zero_commands(self):
+        actualOuput = self.process.communicate( input = '0\n' )[0]
+        self.assertEquals('', actualOuput); 
+
+    def test_one_command(self):
+        actualOuput = self.process.communicate( input = '1\nprint\n' )[0]
+        self.assertEquals('[]\n', actualOuput); 
+
+    def test_two_commands(self):
+        actualOuput = self.process.communicate( input = '2\ninsert 0 5\nprint\n' )[0]
+        self.assertEquals('[5]\n', actualOuput); 
 
 if __name__ == '__main__':
     unittest.main()
