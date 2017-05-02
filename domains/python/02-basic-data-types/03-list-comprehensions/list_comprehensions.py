@@ -5,12 +5,13 @@ if __name__ == '__main__':
     yCoordinate = int( raw_input() )
     zCoordinate = int( raw_input() )
     unacceptableSum = int( raw_input() )
-    comprenhensiveList = []
 
-    for xValue in range(xCoordinate):
-        for yValue in range(yCoordinate):
-            for zValue in range(zCoordinate):
-                if( ( xValue + yValue + zValue ) != unacceptableSum):
-                    comprenhensiveList.append( [xValue, yValue, zValue] )
+    comprenhensiveList = [
+        [xValue, yValue, zValue] 
+        for xValue in range(xCoordinate + 1) 
+        for yValue in range(yCoordinate + 1)
+        for zValue in range(zCoordinate + 1)
+        if( ( xValue + yValue + zValue ) != unacceptableSum)
+    ]
 
     print comprenhensiveList
