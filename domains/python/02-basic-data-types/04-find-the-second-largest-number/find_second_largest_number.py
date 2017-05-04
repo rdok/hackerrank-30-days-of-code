@@ -1,18 +1,16 @@
 import sys
+def removeAll(value, listValue):
+    return filter( lambda number: number != value, listValue)
+
 
 if __name__ == '__main__':
     totalNumbers = int( raw_input() )
     numbers = map(int, raw_input().split())
-    print numbers
 
-    largestNumber = numbers.pop()
-    secondLargestNumber = largestNumber
+    largestNumber = max(numbers)
 
-    for number in numbers:
-        if( largestNumber >= number ):
-            continue
+    numbers = removeAll(largestNumber, numbers)
 
-        secondLargestNumber = largestNumber
-        largestNumber = number
+    secondLargestNumber = max(numbers)
 
     print secondLargestNumber
