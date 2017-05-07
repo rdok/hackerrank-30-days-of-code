@@ -5,19 +5,25 @@ if __name__ == '__main__':
     students = {}
 
     for student in range(0, totalStudents):
-        studentName = raw_input()
-        studentGrade = float( raw_input() )
-        students[ studentName ] = studentGrade
+        name = raw_input()
+        grade = float( raw_input() )
+        students[ name ] = grade
 
-    lowestGrade = min( students )
+    if( len( students ) == 2 ):
+        print min( students )
+        sys.exit()
 
-    print lowestGrade
+    # Remove all occurences of minimum grade
+    students = { 
+        name: grade 
+        for name, grade in students.items() 
+        if min( students.values() ) != grade
+    }
 
-    '''
-    students = filter( lambda grade: grade != lowestGrade, students)
-    
+    # Store all occurences of minimum (second) grade
+    students = { 
+        name for name,
+        grade in students.items() if grade == min( students.values() )
+    }
 
-    secondLowestGrade = min( students )
-
-    #print lambda studentName: stud
-    '''
+    print '\n'.join(sorted(students))
