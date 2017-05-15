@@ -1,0 +1,8 @@
+adium-theme-ubuntu==0.3.4
+ccsm==0.9.12.2
+compizconfig-python==0.9.12.2
+ddt==1.1.1
+gyp==0.1
+pygpgme==0.3
+unity-lens-photos==1.0
+vboxapi==1.0
