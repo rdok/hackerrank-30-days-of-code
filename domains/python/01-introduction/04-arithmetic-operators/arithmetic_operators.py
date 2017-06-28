@@ -1,22 +1,20 @@
-def arithmeticOperatorAnalysis(firstNumber, secondNumber):
+def arithmetic_operator_analysis(first_number, second_number):
+    first_number = int(first_number)
 
-    firstNumber = int( firstNumber )
+    second_number = int(second_number)
 
-    secondNumber = int( secondNumber )
+    num_sum = str(first_number + second_number)
 
-    numSum = str( firstNumber + secondNumber );
+    difference = str(first_number - second_number)
 
-    difference = str( firstNumber - secondNumber );
+    product = str(first_number * second_number)
 
-    product = str( firstNumber * secondNumber );
-
-    return [ numSum, difference, product ];
+    return [num_sum, difference, product]
 
 
 if __name__ == '__main__':
-
     firstNumber = raw_input()
 
     secondNumber = raw_input()
 
-    print '\n'.join(arithmeticOperatorAnalysis(firstNumber, secondNumber))
+    print '\n'.join(arithmetic_operator_analysis(firstNumber, secondNumber))

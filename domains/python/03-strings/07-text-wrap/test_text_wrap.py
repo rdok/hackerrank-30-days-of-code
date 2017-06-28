@@ -2,10 +2,10 @@ import subprocess
 import unittest
 
 
-class TestMutations(unittest.TestCase):
+class TestTextWrap(unittest.TestCase):
     def setUp(self):
         self.process = subprocess.Popen(
-            ["python", "mutations.py"],
+            ["python", "text_wrap.py"],
             stdout=subprocess.PIPE, stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT
         )
@@ -15,10 +15,13 @@ class TestMutations(unittest.TestCase):
 
     def test_default_case(self):
         actual_output = self.process.communicate(
-            input='abracadabra\n5 k\n'
+            input='ABCDEFGHIJKLIMNOQRSTUVWXYZ\n'
         )[0]
 
-        self.assertEquals('abrackdabra\n', actual_output);
+        self.assertEquals(
+            "ABCD\nEFGH\nIJKL\nIMNO\nQRST\nUVWX\nYZ",
+            actual_output
+        )
 
 
 if __name__ == '__main__':
