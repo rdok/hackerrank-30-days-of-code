@@ -1,22 +1,21 @@
 from __future__ import division
 
-def handleDivisionTypes(firstNumber, secondNumber):
 
-    firstNumber = int( firstNumber )
+def handle_division_types(first_input, second_input):
+    first_number = int(first_input)
 
-    secondNumber = int( secondNumber )
+    second_number = int(second_input)
 
-    integerDivision = str( firstNumber // secondNumber );
+    integer_division = str(first_number // second_number)
 
-    floatDivision = str ( firstNumber / secondNumber );
+    float_division = str(first_number / second_number)
 
-    return [ integerDivision, floatDivision ];
+    return [integer_division, float_division]
 
 
 if __name__ == '__main__':
-
     firstNumber = raw_input()
 
     secondNumber = raw_input()
 
-    print '\n'.join(handleDivisionTypes(firstNumber, secondNumber))
+    print '\n'.join(handle_division_types(firstNumber, secondNumber))

@@ -1,52 +1,60 @@
-import sys
 lists = []
 
-def executeCommands():
-    numberOfCommands = int( raw_input() )
-    availableCommands = {
-        'print': printList,
-        'insert': insertList,
-        'remove': removeList,
-        'append': appendList,
-        'sort': sortList,
-        'pop': popList,
-        'reverse': reverseList
+
+def execute_commands():
+    number_of_commands = int(raw_input())
+    available_commands = {
+        'print': print_list,
+        'insert': insert_list,
+        'remove': remove_list,
+        'append': append_list,
+        'sort': sort_list,
+        'pop': pop_list,
+        'reverse': reverse_list
     }
 
-    for commandIndex in range(0, numberOfCommands):
-        rawCommand = raw_input().split(' ')
-        
-        if not ( rawCommand[1:] ) :
-            availableCommands[ rawCommand[0] ]()
-        else:
-            arguments = rawCommand[1:]
-            availableCommands[ rawCommand[0] ]( *arguments )
+    for commandIndex in range(0, number_of_commands):
+        raw_command = raw_input().split(' ')
 
-def printList(): 
+        if not (raw_command[1:]):
+            available_commands[raw_command[0]]()
+        else:
+            arguments = raw_command[1:]
+            available_commands[raw_command[0]](*arguments)
+
+
+def print_list():
     print lists
 
-def insertList(index, value): 
-    index = int( index )
-    value = int( value )
+
+def insert_list(index, value):
+    index = int(index)
+    value = int(value)
 
     lists.insert(index, value)
 
-def removeList(value): 
-    number = int( value )
+
+def remove_list(value):
+    number = int(value)
     lists.remove(number)
 
-def appendList(value): 
-    number = int( value )
+
+def append_list(value):
+    number = int(value)
     lists.append(number)
 
-def sortList(): 
+
+def sort_list():
     lists.sort()
 
-def popList(): 
+
+def pop_list():
     lists.pop()
 
-def reverseList(): 
+
+def reverse_list():
     lists.reverse()
 
+
 if __name__ == '__main__':
-    executeCommands()
+    execute_commands()

@@ -1,7 +1,7 @@
-def arithmetic_operator_analysis(first_number, second_number):
-    first_number = int(first_number)
+def arithmetic_operator_analysis(first_input, second_input):
+    first_number = int(first_input)
 
-    second_number = int(second_number)
+    second_number = int(second_input)
 
     num_sum = str(first_number + second_number)
 
@@ -13,8 +13,8 @@ def arithmetic_operator_analysis(first_number, second_number):
 
 
 if __name__ == '__main__':
-    firstNumber = raw_input()
+    first_number = raw_input()
 
-    secondNumber = raw_input()
+    second_number = raw_input()
 
-    print '\n'.join(arithmetic_operator_analysis(firstNumber, secondNumber))
+    print '\n'.join(arithmetic_operator_analysis(first_number, second_number))
