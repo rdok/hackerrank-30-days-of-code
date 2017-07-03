@@ -18,7 +18,7 @@ class TestStringSplitAndJoin(unittest.TestCase):
             input='this is a string\n'
         )[0]
 
-        self.assertEquals('this-is-a-string\n', actual_output);
+        self.assertEquals('this-is-a-string\n', actual_output)
 
 
 if __name__ == '__main__':

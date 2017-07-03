@@ -15,23 +15,23 @@ class TestStringValidators(unittest.TestCase):
 
     def test_default_case(self):
         actual_output = self.process.communicate(input='qA2\n')[0]
-        self.assertEquals('True\nTrue\nTrue\nTrue\nTrue\n', actual_output);
+        self.assertEquals('True\nTrue\nTrue\nTrue\nTrue\n', actual_output)
 
     def test_only_alphabetical(self):
         actual_output = self.process.communicate(input='qA\n')[0]
-        self.assertEquals('True\nTrue\nFalse\nTrue\nTrue\n', actual_output);
+        self.assertEquals('True\nTrue\nFalse\nTrue\nTrue\n', actual_output)
 
     def test_only_digit(self):
         actual_output = self.process.communicate(input='134\n')[0]
-        self.assertEquals('True\nFalse\nTrue\nFalse\nFalse\n', actual_output);
+        self.assertEquals('True\nFalse\nTrue\nFalse\nFalse\n', actual_output)
 
     def test_only_lower(self):
         actual_output = self.process.communicate(input='lower\n')[0]
-        self.assertEquals('True\nTrue\nFalse\nTrue\nFalse\n', actual_output);
+        self.assertEquals('True\nTrue\nFalse\nTrue\nFalse\n', actual_output)
 
     def test_only_upper(self):
         actual_output = self.process.communicate(input='UPPER\n')[0]
-        self.assertEquals('True\nTrue\nFalse\nFalse\nTrue\n', actual_output);
+        self.assertEquals('True\nTrue\nFalse\nFalse\nTrue\n', actual_output)
 
 
 if __name__ == '__main__':

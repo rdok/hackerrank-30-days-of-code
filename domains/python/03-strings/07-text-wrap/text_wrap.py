@@ -1,9 +1,7 @@
-import sys
+import textwrap
 
 if __name__ == '__main__':
-# Get the user string
+    string_s = raw_input()
+    width_w = int(raw_input())
 
-
-# Get the user width
-
-# Get the user string length
+    print textwrap.fill(string_s, width_w)
