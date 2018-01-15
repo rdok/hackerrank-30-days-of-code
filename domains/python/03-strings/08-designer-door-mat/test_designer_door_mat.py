@@ -21,21 +21,113 @@ class TestTextWrap(unittest.TestCase):
     def test_default_case(self):
         actual_output = self.process.communicate('9 27\n')[0]
 
+        expected_string = '------------.|.------------\n'
+        self.assertTrue(
+            actual_output.startswith(expected_string),
+            "Expected \n%s\n not found in \n%s."
+            % (expected_string, actual_output)
+        )
+
+        expected_string += '---------.|..|..|.---------\n'
+        self.assertTrue(
+            actual_output.startswith(expected_string),
+            "Expected \n%s\n not found in \n%s."
+            % (expected_string, actual_output)
+        )
+
+        expected_string += '------.|..|..|..|..|.------\n'
+        self.assertTrue(
+            actual_output.startswith(expected_string),
+            "Expected \n%s\n not found in \n%s."
+            % (expected_string, actual_output)
+        )
+
+        expected_string += '---.|..|..|..|..|..|..|.---\n'
+        self.assertTrue(
+            actual_output.startswith(expected_string),
+            "Expected \n%s\n not found in \n%s."
+            % (expected_string, actual_output)
+        )
+
+        expected_string += '----------WELCOME----------\n'
+        self.assertTrue(
+            actual_output.startswith(expected_string),
+            "Expected \n%s\n not found in \n%s."
+            % (expected_string, actual_output)
+        )
+
+        expected_string += '---.|..|..|..|..|..|..|.---\n'
+        self.assertTrue(
+            actual_output.startswith(expected_string),
+            "Expected \n%s\n not found in \n%s."
+            % (expected_string, actual_output)
+        )
+
+        expected_string += '------.|..|..|..|..|.------\n'
+        self.assertTrue(
+            actual_output.startswith(expected_string),
+            "Expected \n%s\n not found in \n%s."
+            % (expected_string, actual_output)
+        )
+
+        expected_string += '---------.|..|..|.---------\n'
+        self.assertTrue(
+            actual_output.startswith(expected_string),
+            "Expected \n%s\n not found in \n%s."
+            % (expected_string, actual_output)
+        )
+
+        expected_string += '------------.|.------------\n'
+        self.assertTrue(
+            actual_output.startswith(expected_string),
+            "Expected \n%s\n not found in \n%s."
+            % (expected_string, actual_output)
+        )
+
         self.assertEquals(
-            """
-------------.|.------------\n
----------.|..|..|.---------\n
-------.|..|..|..|..|.------\n
----.|..|..|..|..|..|..|.---\n
-----------WELCOME----------\n
----.|..|..|..|..|..|..|.---\n
-------.|..|..|..|..|.------\n
----------.|..|..|.---------\n
-------------.|.------------\n
-            """,
+            """------------.|.------------
+---------.|..|..|.---------
+------.|..|..|..|..|.------
+---.|..|..|..|..|..|..|.---
+----------WELCOME----------
+---.|..|..|..|..|..|..|.---
+------.|..|..|..|..|.------
+---------.|..|..|.---------
+------------.|.------------\n""",
             actual_output
         )
 
+    def test_small_case(self):
+        actual_output = self.process.communicate('7 21\n')[0]
+
+        self.assertEquals(
+            """---------.|.---------
+------.|..|..|.------
+---.|..|..|..|..|.---
+-------WELCOME-------
+---.|..|..|..|..|.---
+------.|..|..|.------
+---------.|.---------\n""",
+            actual_output
+        )
+
+    def test_big_case(self):
+        actual_output = self.process.communicate('11 33\n')[0]
+
+        self.assertEquals(
+            """---------------.|.---------------
+------------.|..|..|.------------
+---------.|..|..|..|..|.---------
+------.|..|..|..|..|..|..|.------
+---.|..|..|..|..|..|..|..|..|.---
+-------------WELCOME-------------
+---.|..|..|..|..|..|..|..|..|.---
+------.|..|..|..|..|..|..|.------
+---------.|..|..|..|..|.---------
+------------.|..|..|.------------
+---------------.|.---------------\n""",
+            actual_output
+        )
 
 if __name__ == '__main__':
     unittest.main()

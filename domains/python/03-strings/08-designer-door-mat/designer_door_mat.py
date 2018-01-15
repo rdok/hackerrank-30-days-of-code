@@ -1,6 +1,6 @@
 rows, columns = map(int, raw_input().split())
-for upper_half_index in xrange(1, rows, 2):
-    print upper_half_index * '.|.'
-# print
-# for lower_half_index in xrange(rows - 2, -1, -2):
-#     print columns * '-'
+for upperIndex in xrange(1, rows, 2):
+    print (columns - (upperIndex * 3)) / 2 * '-' + upperIndex * '.|.' + (columns - (upperIndex * 3)) / 2 * '-'
+print (columns / 2 - (len('WELCOME')/2)) * '-' + 'WELCOME' + (columns / 2 - (len('WELCOME')/2)) * '-'
+for lowerIndex in xrange(rows - 2, -1, -2):
+    print (columns - (lowerIndex * 3)) / 2 * '-' + lowerIndex * '.|.' + (columns - (lowerIndex * 3)) / 2 * '-'
