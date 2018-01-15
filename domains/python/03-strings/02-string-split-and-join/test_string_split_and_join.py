@@ -1,12 +1,17 @@
+import os
 import subprocess
 import unittest
 
 
 class TestStringSplitAndJoin(unittest.TestCase):
     def setUp(self):
+        script = os.path.dirname(os.path.realpath(__file__)) \
+                 + "/string_split_and_join.py"
+
         self.process = subprocess.Popen(
-            ["python", "string_split_and_join.py"],
-            stdout=subprocess.PIPE, stdin=subprocess.PIPE,
+            ["python", script],
+            stdout=subprocess.PIPE,
+            stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT
         )
 

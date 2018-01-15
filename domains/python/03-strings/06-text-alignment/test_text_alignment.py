@@ -1,12 +1,17 @@
+import os
 import subprocess
 import unittest
 
 
 class TestTextAlignment(unittest.TestCase):
     def setUp(self):
+        script = os.path.dirname(
+            os.path.realpath(__file__)) + "/text_alignment.py"
+
         self.process = subprocess.Popen(
-            ["python", "text_alignment.py"],
-            stdout=subprocess.PIPE, stdin=subprocess.PIPE,
+            ["python", script],
+            stdout=subprocess.PIPE,
+            stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT
         )
 
@@ -14,47 +19,35 @@ class TestTextAlignment(unittest.TestCase):
         self.process = None
 
     def test_default_case(self):
-        actual_output = self.process.communicate(input='5\n')[0]
-        self.assertEquals(
-            "H           HHH            HHHHH            HHHHHHH           "
-            "HHHHHHHHH            HHHHH               HHHHH                   "
-            "        HHHHH               HHHHH                             "
-            "HHHHH               HHHHH                               HHHHH    "
-            "           HHHHH                                 HHHHH           "
-            "    HHHHH                                   HHHHH               "
-            "HHHHH                                     "
-            "HHHHHHHHHHHHHHHHHHHHHHHHH                             "
-            "HHHHHHHHHHHHHHHHHHHHHHHHH                               "
-            "HHHHHHHHHHHHHHHHHHHHHHHHH                                 HHHHH  "
-            "             HHHHH                                             "
-            "HHHHH               HHHHH                                        "
-            "       HHHHH               HHHHH                                 "
-            "                HHHHH               HHHHH                        "
-            "                           HHHHH               HHHHH             "
-            "                                        HHHHH               "
-            "HHHHH                                                            "
-            "             HHHHHHHHH                                           "
-            "                                       HHHHHHH                   "
-            "                                                                 "
-            "                     HHHHH                                       "
-            "                                                                 "
-            "                         HHH                                     "
-            "                                                                 "
-            "                                                    H            "
-            "     ' != '    H    \n   HHH   \n  HHHHH  \n HHHHHHH "
-            "\nHHHHHHHHH\n  HHHHH               HHHHH             \n  HHHHH   "
-            "            HHHHH             \n  HHHHH               HHHHH      "
-            "       \n  HHHHH               HHHHH             \n  HHHHH       "
-            "        HHHHH             \n  HHHHH               HHHHH          "
-            "   \n  HHHHHHHHHHHHHHHHHHHHHHHHH   \n  HHHHHHHHHHHHHHHHHHHHHHHHH "
-            "  \n  HHHHHHHHHHHHHHHHHHHHHHHHH   \n  HHHHH               HHHHH  "
-            "           \n  HHHHH               HHHHH             \n  HHHHH   "
-            "            HHHHH             \n  HHHHH               HHHHH      "
-            "       \n  HHHHH               HHHHH             \n  HHHHH       "
-            "        HHHHH             \n                    HHHHHHHHH \n     "
-            "                HHHHHHH  \n                      HHHHH   \n      "
-            "                 HHH    \n                        H     \n",
-            actual_output)
+        actual_output = self.process.communicate('5\n')[0]
+
+        self.assertEqual(
+            """    H    
+   HHH   
+  HHHHH  
+ HHHHHHH 
+HHHHHHHHH
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHHHHHHHHHHHHHHHHHHHHHH   
+  HHHHHHHHHHHHHHHHHHHHHHHHH   
+  HHHHHHHHHHHHHHHHHHHHHHHHH   
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+  HHHHH               HHHHH             
+                    HHHHHHHHH 
+                     HHHHHHH  
+                      HHHHH   
+                       HHH    
+                        H     \n""", actual_output
+        )
 
 
 if __name__ == '__main__':

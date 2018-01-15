@@ -1,12 +1,16 @@
+import os
 import subprocess
 import unittest
 
 
 class TestMutations(unittest.TestCase):
     def setUp(self):
+        script = os.path.dirname(os.path.realpath(__file__)) + "/mutations.py"
+
         self.process = subprocess.Popen(
-            ["python", "mutations.py"],
-            stdout=subprocess.PIPE, stdin=subprocess.PIPE,
+            ["python", script],
+            stdout=subprocess.PIPE,
+            stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT
         )
 

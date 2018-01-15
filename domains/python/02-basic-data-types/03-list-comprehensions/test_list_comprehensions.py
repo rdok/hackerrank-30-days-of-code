@@ -1,11 +1,15 @@
+import os
 import subprocess
 import unittest
 
 
 class TestTuples(unittest.TestCase):
     def setUp(self):
+        script = os.path.dirname(
+            os.path.realpath(__file__)) + "/list_comprehensions.py"
+
         self.process = subprocess.Popen(
-            ["python", "list_comprehensions.py"],
+            ["python", script],
             stdout=subprocess.PIPE,
             stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT
@@ -15,14 +19,14 @@ class TestTuples(unittest.TestCase):
         self.process = None
 
     def test_use_case(self):
-        actual_output = self.process.communicate(input='1\n1\n1\n2\n')[0]
+        actual_output = self.process.communicate('1\n1\n1\n2\n')[0]
         self.assertEquals(
             '[[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0, 0], [1, 1, 1]]\n',
             actual_output
         )
 
     def test_use_case_custom_1(self):
-        actual_output = self.process.communicate(input='2\n3\n4\n5\n')[0]
+        actual_output = self.process.communicate('2\n3\n4\n5\n')[0]
         self.assertEquals(
             '[[0, 0, 0], [0, 0, 1], [0, 0, 2], [0, 0, 3], [0, 0, 4], [0, 1, '
             '0], [0, 1, 1], [0, 1, 2], [0, 1, 3], [0, 2, 0], [0, 2, 1], [0, '

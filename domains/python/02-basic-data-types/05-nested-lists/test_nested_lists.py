@@ -1,11 +1,15 @@
+import os
 import subprocess
 import unittest
 
 
 class TestFindSecondLowestGrade(unittest.TestCase):
     def setUp(self):
+        script = os.path.dirname(
+            os.path.realpath(__file__)) + "/nested_lists.py"
+
         self.process = subprocess.Popen(
-            ["python", "nested_lists.py"],
+            ["python", script],
             stdout=subprocess.PIPE,
             stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT

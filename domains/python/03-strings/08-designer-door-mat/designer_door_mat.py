@@ -1,12 +1,6 @@
-if __name__ == '__main__':
-    height = int(raw_input())
-    width = int(raw_input())
-
-    filler = '-'
-    pattern = '.|.'
-
-    leftPart = filler * (width / 2 - 1)
-    middle = pattern
-    rightPart = filler * (width / 2 - 1)
-
-    print leftPart + middle + rightPart
+rows, columns = map(int, raw_input().split())
+for upper_half_index in xrange(1, rows, 2):
+    print upper_half_index * '.|.'
+# print
+# for lower_half_index in xrange(rows - 2, -1, -2):
+#     print columns * '-'

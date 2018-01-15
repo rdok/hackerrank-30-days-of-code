@@ -1,3 +1,4 @@
+import os
 import subprocess
 import unittest
 
@@ -5,34 +6,30 @@ from ddt import ddt, data, unpack
 
 
 @ddt
-class TestArithmetciOperators(unittest.TestCase):
+class TestArithmeticOperators(unittest.TestCase):
     @unpack
-    @data(
-        {
-            'firstInput': '1', 'secondInput': '3', 'total': '4',
-            'difference': '-2', 'product': '3'
-        },
-        {
-            'firstInput': '3', 'secondInput': '2', 'total': '5',
-            'difference': '1', 'product': '6'
-        }
-    )
-    def test_sum_of_numbers(self, first_input, second_input, total, difference,
-                            product):
-        process = subprocess.Popen(["python", "arithmetic_operators.py"],
-                                   stdout=subprocess.PIPE,
-                                   stdin=subprocess.PIPE,
-                                   stderr=subprocess.STDOUT)
+    @data({'first': 1, 'second': 3, 'total': 4, 'diff': -2, 'product': 3},
+          {'first': 3, 'second': 2, 'total': 5, 'diff': 1, 'product': 6})
+    def test_sum_of_numbers(self, first, second, total, diff, product):
+        communication_input = str(first) + '\n' + str(second) + '\n'
+        actual_output = self.process.communicate(communication_input)[0]
+        expected = str(total) + '\n' + str(diff) + '\n' + str(product) + '\n'
 
-        actual_output = \
-            process.communicate(
-                input=first_input + '\n' + second_input + '\n'
-            )[0]
+        self.assertEquals(expected, actual_output)
 
-        self.assertEquals(
-            total + '\n' + difference + '\n' + product + '\n',
-            actual_output
+    def setUp(self):
+        script = os.path.dirname(os.path.realpath(__file__)) \
+                 + "/arithmetic_operators.py"
+
+        self.process = subprocess.Popen(
+            ["python", script],
+            stdout=subprocess.PIPE,
+            stdin=subprocess.PIPE,
+            stderr=subprocess.STDOUT
         )
+
+    def tearDown(self):
+        self.process = None
 
 
 if __name__ == '__main__':

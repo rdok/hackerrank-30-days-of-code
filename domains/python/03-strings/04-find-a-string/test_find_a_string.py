@@ -1,12 +1,17 @@
+import os
 import subprocess
 import unittest
 
 
 class TestFindAString(unittest.TestCase):
     def setUp(self):
+        script = os.path.dirname(
+            os.path.realpath(__file__)) + "/find_a_string.py"
+
         self.process = subprocess.Popen(
-            ["python", "find_a_string.py"],
-            stdout=subprocess.PIPE, stdin=subprocess.PIPE,
+            ["python", script],
+            stdout=subprocess.PIPE,
+            stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT
         )
 

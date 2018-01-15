@@ -1,11 +1,15 @@
+import os
 import subprocess
 import unittest
 
 
 class TestFindSecondLargestNumber(unittest.TestCase):
     def setUp(self):
+        script = os.path.dirname(
+            os.path.realpath(__file__)) + "/find_second_largest_number.py"
+
         self.process = subprocess.Popen(
-            ["python", "find_second_largest_number.py"],
+            ["python", script],
             stdout=subprocess.PIPE,
             stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT

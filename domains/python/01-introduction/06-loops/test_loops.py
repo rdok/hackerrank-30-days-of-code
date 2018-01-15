@@ -1,3 +1,4 @@
+import os
 import subprocess
 import unittest
 
@@ -7,7 +8,9 @@ from ddt import ddt, data, unpack
 @ddt
 class TestDivision(unittest.TestCase):
     def setUp(self):
-        self.process = subprocess.Popen(["python", "loops.py"],
+        script = os.path.dirname(os.path.realpath(__file__)) + "/loops.py"
+
+        self.process = subprocess.Popen(["python", script],
                                         stdout=subprocess.PIPE,
                                         stdin=subprocess.PIPE,
                                         stderr=subprocess.STDOUT)
@@ -24,9 +27,9 @@ class TestDivision(unittest.TestCase):
            '\n256\n289\n324\n361\n'])
     @unpack
     def test_one(self, user_input, expected_output):
-        actual_ouput = self.process.communicate(input=user_input)[0]
+        actual_output = self.process.communicate(input=user_input)[0]
 
-        self.assertEquals(expected_output, actual_ouput)
+        self.assertEquals(expected_output, actual_output)
 
 
 if __name__ == '__main__':

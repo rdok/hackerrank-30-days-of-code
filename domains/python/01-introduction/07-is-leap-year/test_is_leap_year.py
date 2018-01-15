@@ -1,3 +1,4 @@
+import os
 import subprocess
 import unittest
 
@@ -42,7 +43,10 @@ class TestLeapYear(unittest.TestCase):
         self.assertFalse(is_leap_year.dividable_by_four_hundred(2500))
 
     def test_prints_expected_outpout(self):
-        self.process = subprocess.Popen(["python", "is_leap_year.py"],
+        script = os.path.dirname(
+            os.path.realpath(__file__)) + "/is_leap_year.py"
+
+        self.process = subprocess.Popen(["python", script],
                                         stdout=subprocess.PIPE,
                                         stdin=subprocess.PIPE,
                                         stderr=subprocess.STDOUT)

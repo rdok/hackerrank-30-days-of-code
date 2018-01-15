@@ -1,3 +1,4 @@
+import os
 import subprocess
 import unittest
 
@@ -9,9 +10,10 @@ class TestRawInput(unittest.TestCase):
     @data('How many chickens does it take to cross the road?\n', 'other-text\n')
     def test_prints_raw_input(self, value):
         expected_output = value
+        dir_path = os.path.dirname(os.path.realpath(__file__))
 
         process = subprocess.Popen(
-            ["python", "raw_input.py"],
+            ["python", dir_path + "/raw_input.py"],
             stdout=subprocess.PIPE,
             stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT

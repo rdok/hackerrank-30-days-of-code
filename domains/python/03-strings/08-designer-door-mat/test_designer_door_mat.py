@@ -1,11 +1,15 @@
+import os
 import subprocess
 import unittest
 
 
 class TestTextWrap(unittest.TestCase):
     def setUp(self):
+        script = os.path.dirname(
+            os.path.realpath(__file__)) + "/designer_door_mat.py"
+
         self.process = subprocess.Popen(
-            ["python", "designer_door_mat.py"],
+            ["python", script],
             stdout=subprocess.PIPE,
             stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT
@@ -14,31 +18,21 @@ class TestTextWrap(unittest.TestCase):
     def tearDown(self):
         self.process = None
 
-    def test_first_line(self):
-        actual_output = self.process.communicate(
-            input='9\n27\n'
-        )[0]
-
-        self.assertEquals(
-            "------------.|.------------\n",
-            actual_output
-        )
-
     def test_default_case(self):
-        actual_output = self.process.communicate(
-            input='9\n27\n'
-        )[0]
+        actual_output = self.process.communicate('9 27\n')[0]
 
         self.assertEquals(
-            "------------.|.------------\n"
-            "---------.|..|..|.---------\n"
-            "------.|..|..|..|..|.------\n"
-            "---.|..|..|..|..|..|..|.---\n"
-            "----------WELCOME----------\n"
-            "---.|..|..|..|..|..|..|.---\n"
-            "------.|..|..|..|..|.------\n"
-            "---------.|..|..|.---------\n"
-            "------------.|.------------\n",
+            """
+------------.|.------------\n
+---------.|..|..|.---------\n
+------.|..|..|..|..|.------\n
+---.|..|..|..|..|..|..|.---\n
+----------WELCOME----------\n
+---.|..|..|..|..|..|..|.---\n
+------.|..|..|..|..|.------\n
+---------.|..|..|.---------\n
+------------.|.------------\n
+            """,
             actual_output
         )
 

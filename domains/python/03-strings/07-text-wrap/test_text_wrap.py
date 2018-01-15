@@ -1,11 +1,14 @@
+import os
 import subprocess
 import unittest
 
 
 class TestTextWrap(unittest.TestCase):
     def setUp(self):
+        script = os.path.dirname(os.path.realpath(__file__)) + "/text_wrap.py"
+
         self.process = subprocess.Popen(
-            ["python", "text_wrap.py"],
+            ["python", script],
             stdout=subprocess.PIPE,
             stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT

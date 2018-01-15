@@ -1,11 +1,15 @@
+import os
 import subprocess
 import unittest
 
 
 class TestFindingPercentage(unittest.TestCase):
     def setUp(self):
+        script = os.path.dirname(
+            os.path.realpath(__file__)) + "/finding_the_percentage.py"
+
         self.process = subprocess.Popen(
-            ["python", "finding_the_percentage.py"],
+            ["python", script],
             stdout=subprocess.PIPE, stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT
         )
