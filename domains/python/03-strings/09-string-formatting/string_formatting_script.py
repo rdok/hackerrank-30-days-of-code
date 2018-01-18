@@ -1,4 +1,5 @@
 from string_formatter import *
 
 if __name__ == '__main__':
-    print StringFormatter()
+
+    print str(StringFormatter(input()))

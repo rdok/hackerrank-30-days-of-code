@@ -3,22 +3,16 @@ class StringFormatter:
         self.number = number
 
     def __str__(self):
-        min_field_width = len(bin(self.number))
+        output = ''
+        min_field_width = len('{0:b}'.format(self.number))
 
-        replacement_field = '{0:>{4}} {1:>{4}} {2:>{4}} {3:>{4}}'
+        for index in range(1, self.number + 1):
+            output += self.format(index, min_field_width) + '\n'
 
-        return replacement_field.format(
-            self.number,
-            oct(self.number),
-            hex(self.number),
-            bin(self.number),
-            min_field_width
-        )
+        return output.rstrip('\n')
 
     @staticmethod
-    def format(number):
-        min_field_width = len('{0:b}'.format(number))
-
-        replacement_field = ' {0:>{1}} {0:>{1}o} {0:>{1}x} {0:>{1}b}'
+    def format(number, min_field_width):
+        replacement_field = '{0:>{1}} {0:>{1}o} {0:>{1}X} {0:>{1}b}'
 
         return replacement_field.format(number, min_field_width)
