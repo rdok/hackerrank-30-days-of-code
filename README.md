@@ -2,5 +2,7 @@
 > Solving challenges using test driven development.
 
 ### Python
+#### [pytest-watch](https://github.com/joeyespo/pytest-watch)
+> Local continuous test runner with pytest and watchdog. 
 
-`python -m unittest discover -f domains/python`
+`ptw`
