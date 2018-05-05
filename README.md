@@ -1,7 +1,6 @@
 # HackerRank, the TDD way
 > Python katas using test driven development.
 
-#### [pytest-watch](https://github.com/joeyespo/pytest-watch)
-> Local continuous test runner with pytest and watchdog. 
-
-`ptw`
+ - Use PyCharm
+ - Setup test configuration with pytest.
+ - On git bash execute: `python -m pip install -r requirements-to-freeze.txt`

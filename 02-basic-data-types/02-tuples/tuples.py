@@ -1,5 +1,9 @@
 if __name__ == '__main__':
+
     length = raw_input()
-    tupleValues = tuple(map(int, raw_input().split(' ')))
+    elements = raw_input().split(' ')
+    sequence = map(int, elements)
+    tupleValues = tuple(sequence)
+    print tupleValues
 
     print hash(tupleValues)

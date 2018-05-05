@@ -18,9 +18,9 @@ class TestTuples(unittest.TestCase):
         self.process = None
 
     def test_use_case(self):
-        actual_ouput = self.process.communicate('2\n1 2\n')[0]
+        actual_output = self.process.communicate('2\n1 2\n')[0]
 
-        self.assertEquals('3713081631934410656\n', actual_ouput)
+        self.assertEquals('3713081631934410656\n', actual_output)
 
 
 if __name__ == '__main__':
