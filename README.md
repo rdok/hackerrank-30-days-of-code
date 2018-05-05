@@ -1,4 +1,7 @@
-# HackerRank, the TDD way
+# HackerRank, the TDD way  
+[![Build Status](https://travis-ci.org/rdok/hackerrank.com.svg?branch=master)](https://travis-ci.org/rdok/hackerrank.com)  
+
+
 > Python katas using test driven development.
 
  - Use PyCharm
