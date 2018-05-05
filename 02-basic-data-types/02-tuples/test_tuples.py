@@ -1,6 +1,7 @@
 import os
 import subprocess
 import unittest
+from sys import platform
 
 
 class TestTuples(unittest.TestCase):
@@ -20,7 +21,9 @@ class TestTuples(unittest.TestCase):
     def test_default_use_case(self):
         actual_output = self.process.communicate('2\n1 2\n')[0]
 
-        self.assertEquals('1299869600\n', actual_output)
+        expected = '1299869600' if platform == "win32" else '3713081631934410656'
+
+        self.assertEquals(expected + '\n', actual_output)
 
 
 if __name__ == '__main__':
