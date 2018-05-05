@@ -17,10 +17,10 @@ class TestTuples(unittest.TestCase):
     def tearDown(self):
         self.process = None
 
-    def test_use_case(self):
+    def test_default_use_case(self):
         actual_output = self.process.communicate('2\n1 2\n')[0]
 
-        self.assertEquals('3713081631934410656\n', actual_output)
+        self.assertEquals('1299869600\n', actual_output)
 
 
 if __name__ == '__main__':
