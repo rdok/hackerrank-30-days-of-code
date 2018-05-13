@@ -2,12 +2,12 @@ from src.codeacademy.learn_python.p01_python_syntax import p01_hello_world
 from tests.test_case import TestCase
 
 
-class TestScript(TestCase):
+class HelloWorldTest(TestCase):
 
     def setUp(self):
         self.script = p01_hello_world.__file__
 
-    def test_it_returns_hello_world_string(self):
+    def test_it_prints_hello_world_string(self):
         actual_output = self.execute(self.script)
 
         expected = "Hello, world!\n"
