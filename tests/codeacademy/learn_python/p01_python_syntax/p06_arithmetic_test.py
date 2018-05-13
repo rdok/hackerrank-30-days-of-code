@@ -10,3 +10,6 @@ class ArithmeticTest(TestCase):
     def test_it_multiplies_two_numbers(self):
         self.assertEqual(10, p06_arithmetic.product)
 
+    def test_it_finds_the_remainder(self):
+        self.assertEqual(1, p06_arithmetic.remainder)
+
