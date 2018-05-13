@@ -8,7 +8,7 @@ class StringTest(TestCase):
         self.script =  p03_string.__file__
 
     def test_print_string_using_plus_operator(self):
-        expected = 'Hello Chosen One\n1'
+        expected = 'Hello Chosen One\n'
 
         actual = self.execute(self.script)
 
