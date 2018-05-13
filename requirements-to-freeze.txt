@@ -1,3 +1,1 @@
-ddt
-pytest-watch
-pytest
+unittest-data-provider
