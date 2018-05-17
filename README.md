@@ -1,7 +1,6 @@
 # Learning Python, the TDD way  
 > Python katas from Hackerrank, CodeAcademy
-[![Build Status](https://travis-ci.org/rdok/hackerrank.com.svg?branch=master)](https://travis-ci.org/rdok/hackerrank.com)  
-
+[![Build Status](https://travis-ci.org/rdok/python.katas.svg?branch=master)](https://travis-ci.org/rdok/python.katas)
 
  - Use PyCharm IDE
  - Setup test configuration to use pytest.
